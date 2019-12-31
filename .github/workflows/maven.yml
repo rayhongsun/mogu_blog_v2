@@ -17,11 +17,11 @@ jobs:
       with:
         java-version: 1.8
       env: 
-        github_deploy_key: ${{secrets.github_deploy_keys}} 
+        GITHUB_DEPLOY_KEY: ${{ secrets.github_deploy_key }} 
     - name: Set SSH Environment
       run: |
         mkdir -p ~/.ssh/
-        echo "$github_deploy_key" > ~/.ssh/id_rsa
+        echo "$GITHUB_DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com > ~/.ssh/known_hosts
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
