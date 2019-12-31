@@ -37,11 +37,7 @@ jobs:
         mvn clean install
     - name: scp
       run: |
-        rm -f ~/.ssh/id_rsa
         echo "${{ secrets.DOCKER_ID_RSA }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com > ~/.ssh/known_hosts
-        chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_admin/target/mogu_admin-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:$/home/mogu_blog/mogu_admin/
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_eureka/target/mogu_eureka-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:$/home/mogu_blog/mogu_eureka/
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_picture/target/mogu_picture-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:$/home/mogu_blog/mogu_picture/
