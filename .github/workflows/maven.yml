@@ -16,18 +16,29 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+      env: 
+        github_deploy_key: ${{secrets.github_deploy_key}} 
     - name: Set SSH Environment
       run: |
         mkdir -p ~/.ssh/
-        echo "$DOCS_DEPLOY_KEY" > ~/.ssh/id_rsa
+        echo "$github_deploy_key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com > ~/.ssh/known_hosts
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - name: download config file and replace
+      run: |
+        git clone https://github.com/TC-zerol/mogu_blog_config.git
+        mv -f config/mogu_admin/application.yml mogu_admin/src/main/resources/application.yml
+        mv -f config/mogu_eureka/application.yml mogu_eureka/src/main/resources/application.yml
+        mv -f config/mogu_picture/application.yml mogu_picture/src/main/resources/application.yml
+        mv -f config/mogu_sms/application.yml mogu_sms/src/main/resources/application.yml
+        mv -f config/mogu_web/application.yml mogu_web/src/main/resources/application.yml
     - name: build
       run: | 
         mvn clean install
-        cd mogu_admin
-         mvn clean package
+    - name: start
+      run: |
+            
           
       
       
