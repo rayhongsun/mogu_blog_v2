@@ -21,7 +21,6 @@ jobs:
         mkdir -p ~/.ssh/
         echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
     - name: download config file and replace
       run: |
@@ -37,13 +36,6 @@ jobs:
         mvn clean install
     - name: scp
       run: |
-        rm -f ~/.ssh/id_rsa
-        
-        echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
-        echo "${{ secrets.github_deploy_key_pub }}" > ~/.ssh/authorized_keys
-        chmod 600 ~/.ssh/id_rsa
-        
-        chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_admin/target/mogu_admin-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:/home/mogu_blog/mogu_admin/
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_eureka/target/mogu_eureka-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:/home/mogu_blog/mogu_eureka/
         scp -P ${{ secrets.DOCKER_PORT }} ./mogu_picture/target/mogu_picture-0.0.1-SNAPSHOT.jar root@${{ secrets.DOCKER_IP }}:/home/mogu_blog/mogu_picture/
