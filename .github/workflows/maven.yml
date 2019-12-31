@@ -38,6 +38,7 @@ jobs:
     - name: scp
       run: |
         rm -f ~/.ssh/id_rsa
+        rm -f ~/.ssh/known_hosts
         echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan ${{ secrets.DOCKER_IP }} > ~/.ssh/known_hosts
