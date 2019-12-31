@@ -24,6 +24,7 @@ jobs:
         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/id_rsa
         chmod 700 ~/.ssh && chmod 700 ~/.ssh/*
+        ls -l ~/.ssh/
     - name: download config file and replace
       run: |
         git clone git@github.com:TC-zerol/mogu_blog_config.git
