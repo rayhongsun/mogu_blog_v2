@@ -40,6 +40,7 @@ jobs:
         rm -f ~/.ssh/id_rsa
         
         echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.github_deploy_key_pub }}" > ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/id_rsa
         
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
