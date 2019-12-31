@@ -16,6 +16,18 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: show
-      run: mvn clean install
+    - name: Set SSH Environment
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$DOCS_DEPLOY_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com > ~/.ssh/known_hosts
+        chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - name: build
+      run: | 
+        mvn clean install
+        cd mogu_admin
+         mvn clean package
+          
+      
       
