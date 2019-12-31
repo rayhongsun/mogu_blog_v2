@@ -27,7 +27,7 @@ jobs:
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
     - name: download config file and replace
       run: |
-        git clone https://github.com/TC-zerol/mogu_blog_config.git
+        git clone git@github.com:TC-zerol/mogu_blog_config.git
         mv -f config/mogu_admin/application.yml mogu_admin/src/main/resources/application.yml
         mv -f config/mogu_eureka/application.yml mogu_eureka/src/main/resources/application.yml
         mv -f config/mogu_picture/application.yml mogu_picture/src/main/resources/application.yml
