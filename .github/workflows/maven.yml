@@ -21,11 +21,12 @@ jobs:
     - name: Set SSH Environment
       run: |
         mkdir -p ~/.ssh/
-        printf $GITHUB_DEPLOY_KEY
         echo "$GITHUB_DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com > ~/.ssh/known_hosts
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+        cd ~/.ssh/
+        ls
     - name: download config file and replace
       run: |
         git clone git@github.com:TC-zerol/mogu_blog_config.git
