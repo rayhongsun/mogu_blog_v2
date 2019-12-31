@@ -20,6 +20,8 @@ jobs:
       run: |
         mkdir -p ~/.ssh/
         echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.github_deploy_keys_pub }}" > ~/.ssh/id_rsa.pub
+        cat id_rsa.pub >> authorized_keys
         chmod 600 ~/.ssh/id_rsa
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
     - name: download config file and replace
