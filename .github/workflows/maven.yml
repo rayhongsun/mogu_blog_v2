@@ -17,7 +17,7 @@ jobs:
       with:
         java-version: 1.8
       env: 
-        github_deploy_key: ${{secrets.github_deploy_key}} 
+        github_deploy_key: ${{secrets.github_deploy_keys}} 
     - name: Set SSH Environment
       run: |
         mkdir -p ~/.ssh/
