@@ -19,8 +19,8 @@ jobs:
     - name: Set SSH Environment
       run: |
         mkdir -p ~/.ssh/
-        echo "${{ secrets.github_deploy_key }}" > ~/.ssh/id_rsa
-        echo "${{ secrets.github_deploy_keys_pub }}" > ~/.ssh/id_rsa.pub
+        echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/id_rsa
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
