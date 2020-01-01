@@ -90,7 +90,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
         script: |
-          cd /home/mogu_eureka/
+          cd /home/mogu_blog/mogu_eureka/
           ./shutdown.sh
           ./startup.sh
     - name: start_picture
@@ -101,7 +101,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
         script: |
-          cd /home/mogu_picture/
+          cd /home/mogu_blog/mogu_picture/
           ./shutdown.sh
           ./startup.sh
     - name: start_admin
@@ -112,7 +112,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
         script: |
-          cd /home/mogu_admin/
+          cd /home/mogu_blog/mogu_admin/
           ./shutdown.sh
           ./startup.sh
     - name: start_sms
@@ -123,7 +123,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
         script: |
-          cd /home/mogu_sms/
+          cd /home/mogu_blog/mogu_sms/
           ./shutdown.sh
           ./startup.sh
     - name: start_web
@@ -134,7 +134,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
         script: |
-          cd /home/mogu_web/
+          cd /home/mogu_blog/mogu_web/
           ./shutdown.sh
           ./startup.sh
 
