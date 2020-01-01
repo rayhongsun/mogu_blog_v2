@@ -51,6 +51,7 @@ jobs:
         npm run build
         cd ..
     - name: move_to_files
+      run: |
         mkdir -p transfer_files
         mv ./mogu_admin/target/mogu_admin-0.0.1-SNAPSHOT.jar ./tranfer_files/mogu_admin-0.0.1-SNAPSHOT.jar
         mv ./mogu_sms/target/mogu_sms-0.0.1-SNAPSHOT.jar ./tranfer_files/mogu_sms-0.0.1-SNAPSHOT.jar
