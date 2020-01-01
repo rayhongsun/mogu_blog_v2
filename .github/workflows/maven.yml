@@ -82,15 +82,62 @@ jobs:
         username: ${{ secrets.DOCKER_ID }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
-    - name: start_all
+    - name: start_eureka
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.DOCKER_IP }}
         username: ${{ secrets.DOCKER_ID }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
-        script: /home/startAll.sh
-        
+        script: |
+          cd /home/mogu_eureka/
+          ./shutdown.sh
+          ./startup.sh
+    - name: start_picture
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DOCKER_IP }}
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        port: ${{ secrets.DOCKER_PORT }}
+        script: |
+          cd /home/mogu_picture/
+          ./shutdown.sh
+          ./startup.sh
+    - name: start_admin
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DOCKER_IP }}
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        port: ${{ secrets.DOCKER_PORT }}
+        script: |
+          cd /home/mogu_admin/
+          ./shutdown.sh
+          ./startup.sh
+    - name: start_sms
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DOCKER_IP }}
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        port: ${{ secrets.DOCKER_PORT }}
+        script: |
+          cd /home/mogu_sms/
+          ./shutdown.sh
+          ./startup.sh
+    - name: start_web
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DOCKER_IP }}
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        port: ${{ secrets.DOCKER_PORT }}
+        script: |
+          cd /home/mogu_web/
+          ./shutdown.sh
+          ./startup.sh
+
          
       
       
