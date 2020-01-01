@@ -27,13 +27,13 @@ jobs:
         ls -l ~/.ssh/
     - name: download config file and replace
       run: |
-        git clone git@github.com:TC-zerol/mogu_blog_config.git
+        git clone git@github.com:moxi624/mogu_prod_configuration.git
         ls
-        mv -f ./mogu_blog_config/config/mogu_admin/application.yml ./mogu_admin/src/main/resources/application.yml
-        mv -f ./mogu_blog_config/config/mogu_eureka/application.yml ./mogu_eureka/src/main/resources/application.yml
-        mv -f ./mogu_blog_config/config/mogu_picture/application.yml ./mogu_picture/src/main/resources/application.yml
-        mv -f ./mogu_blog_config/config/mogu_sms/application.yml ./mogu_sms/src/main/resources/application.yml
-        mv -f ./mogu_blog_config/config/mogu_web/application.yml ./mogu_web/src/main/resources/application.yml
+        mv -f ./mogu_prod_configuration/config/mogu_admin/application.yml ./mogu_admin/src/main/resources/application.yml
+        mv -f ./mogu_prod_configuration/config/mogu_eureka/application.yml ./mogu_eureka/src/main/resources/application.yml
+        mv -f ./mogu_prod_configuration/config/mogu_picture/application.yml ./mogu_picture/src/main/resources/application.yml
+        mv -f ./mogu_prod_configuration/config/mogu_sms/application.yml ./mogu_sms/src/main/resources/application.yml
+        mv -f ./mogu_prod_configuration/config/mogu_web/application.yml ./mogu_web/src/main/resources/application.yml
     - name: build
       run: | 
         mvn clean install
