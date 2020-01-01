@@ -67,7 +67,7 @@ jobs:
     - name: scp-mogu-sms
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: ./mogu_picture/target/mogu_sms-0.0.1-SNAPSHOT.jar
+        local: ./mogu_sms/target/mogu_sms-0.0.1-SNAPSHOT.jar
         remote: /home/mogu_blog/mogu_sms/mogu_sms-0.0.1-SNAPSHOT.jar
         host: ${{ secrets.DOCKER_IP }}
         username: ${{ secrets.DOCKER_ID }}
@@ -76,14 +76,20 @@ jobs:
     - name: scp-mogu-web
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: ./mogu_picture/target/mogu_web-0.0.1-SNAPSHOT.jar
+        local: ./mogu_web/target/mogu_web-0.0.1-SNAPSHOT.jar
         remote: /home/mogu_blog/mogu_web/mogu_web-0.0.1-SNAPSHOT.jar
         host: ${{ secrets.DOCKER_IP }}
         username: ${{ secrets.DOCKER_ID }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         port: ${{ secrets.DOCKER_PORT }}
     - name: start_all
-      run: |
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DOCKER_IP }}
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        port: ${{ secrets.DOCKER_PORT }}
+        script: /home/startAll.sh
         
          
       
